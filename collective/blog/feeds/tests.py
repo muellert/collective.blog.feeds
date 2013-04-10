@@ -107,6 +107,16 @@ class FunctionalTestCase(ptc.FunctionalTestCase, TestCase):
         # But *not* the event, as it has no feed adapter.
         self.assert_('The main body of the Event' not in anon.contents)
 
+
+class CheckAPICompatibility(unittest.TestCase):
+    """Need some API checks, too."""
+
+    def test_imports(self):
+        """The API has changed between Plone 4.2 and Plone 4.3."""
+        from collective.blog.feeds import viewlets
+        self.assertTrue(True)
+
+
 def test_suite():
     return unittest.TestSuite([
         unittest.makeSuite(FunctionalTestCase),
